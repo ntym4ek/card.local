@@ -1,0 +1,27 @@
+<?php
+
+
+function qr_codes_install() {
+  // migrate from imagecache if it exists
+  $old = variable_get('qr_codes_block_imagecache_preset', NULL);
+  if ($old) {
+    variable_set('qr_codes_block_image_style', $old);
+    variable_del('qr_codes_block_imagecache_preset');
+    cache_clear_all('variables', 'cache');
+  }
+}
+/**
+ * @file
+ * Install, update and uninstall functions for the qr_codes module.
+ *
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function qr_codes_uninstall() {
+  db_delete('variable')
+  ->condition('name', 'qr_codes', 'LIKE')
+  ->execute();
+  cache_clear_all('variables', 'cache');
+}

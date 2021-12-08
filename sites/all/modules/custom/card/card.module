@@ -1,0 +1,100 @@
+<?
+
+
+/**
+ * Implements hook_menu().
+ */
+function card_menu()
+{
+  $items['card/%'] = array(
+    'page callback' => 'card_page',
+    'page arguments' => array(1, 2),
+    'access callback' => true,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_menu_alter().
+ */
+function card_menu_alter(&$items)
+{
+  // убрать материалы с Главной
+  $items['node']['page callback'] = 'card_empty_front_page_callback';
+}
+
+/**
+ * menu callback
+ * убрать материалы с главной
+ */
+function card_empty_front_page_callback()
+{
+  drupal_set_title('');
+  return [];
+}
+
+function card_page($uid, $share = null)
+{
+  if (is_numeric($uid)) {
+    $card = card_get_card($uid, $share);
+
+    // todo добавить кнопку Добавить в контакты
+    // https://developers.google.com/people/quickstart/js#python-2.x
+    // https://question-it.com/questions/818809/dobavit-v-kontakty-naprimer-knopka-dobavit-v-kalendar-html-parametr-ajax
+
+    return $card;
+  } else {
+    drupal_not_found();
+  }
+}
+
+/**
+ * вернуть рендер массив с карточкой
+ */
+function card_get_card($uid, $share)
+{
+  if (is_numeric($uid)) {
+    $user_wr = entity_metadata_wrapper('user', $uid);
+    $photo_uri = 'photo/no_photo_man.jpg';
+
+    $name = $user_wr->field_user_name->value();
+    $surname = $user_wr->field_user_surname->value();
+    $phone = $user_wr->field_user_phone->value();
+    $company = $user_wr->field_user_company->value();
+    $office = $user_wr->field_user_office->value();
+
+    if ($user_wr->value()->picture) {
+      $photo_uri = $user_wr->value()->picture['uri'];
+    }
+    if ($user_wr->field_user_logo->value()) {
+      $logo_uri = $user_wr->field_user_logo->value()['uri'];
+    }
+    $photo_url = image_style_url('visit_card_photo', $photo_uri);
+    $logo_url = $logo_uri ? image_style_url('visit_card_photo', $logo_uri) : '';
+
+
+    $qr_markup = theme('qr_codes', array('data' => $GLOBALS["base_url"] . "/card/$uid", 'width' => 200, 'height' => 200, 'margin' => 0, 'image_style' => ''));
+
+    return [
+      'uid' => $uid,
+      'name' => "$name $surname",
+      'office' => "$office<br>$company",
+      'photo_url' => $photo_url,
+      'logo_url' => $logo_url,
+      'qr' => $qr_markup,
+      'phone' => $phone,
+      'email' => $user_wr->mail->value(),
+      'share' => $share ? true : false,
+      '#theme' => 'visit_card',
+    ];
+  }
+}
+
+function card_form_alter(&$form, $form_state, $form_id)
+{
+  if ($form_id == '') {
+
+  }
+}

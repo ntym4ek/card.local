@@ -1,0 +1,26 @@
+name = 'VCard Theme'
+description =
+package = Custom
+version = VERSION
+core = 7.x
+stylesheets[all][] = css/vctheme.css
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[sidebar_first]  = Left sidebar
+regions[sidebar_second] = Right sidebar
+regions[content] = Content
+regions[header] = Header
+regions[footer] = Footer
+regions[highlighted] = Highlighted
+regions[page_top] = Page Top
+regions[page_bottom] = Page Bottom
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+
+scripts[] = 'js/vctheme.css'
+

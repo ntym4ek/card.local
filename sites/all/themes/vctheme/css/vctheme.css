@@ -1,0 +1,175 @@
+* {
+  outline: 0 !important; }
+
+body {
+  font-size: 15px;
+  font-family: ubuntu,Helvetica,Arial,sans-serif;
+  color: #333;
+  line-height: 1.428571429;
+  background-color: #d9d9d9;
+  overflow-y: scroll;
+  margin: 0; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto; }
+
+.header {
+  background: #343a40;
+  height: 80px; }
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%; }
+  .header .branding img {
+    display: block;
+    height: 60px; }
+  .header .menu a {
+    color: #fff;
+    text-decoration: none; }
+
+.page .content {
+  background: #fff;
+  padding: 30px; }
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .card-wrapper .p-card {
+    display: flex;
+    flex: auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: white;
+    overflow: hidden;
+    height: 100%; }
+    .card-wrapper .p-card a {
+      color: #333;
+      text-decoration: none; }
+    .card-wrapper .p-card img {
+      display: block;
+      max-width: 100%;
+      height: auto; }
+    .card-wrapper .p-card .p-card-top {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: auto;
+      max-height: 40%;
+      padding-top: 45px; }
+      .card-wrapper .p-card .p-card-top .p-card-im {
+        flex: 1 0 auto;
+        display: flex;
+        margin-bottom: 15px; }
+      .card-wrapper .p-card .p-card-top .p-card-photo {
+        flex: 0 0 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; }
+      .card-wrapper .p-card .p-card-top .p-card-logo {
+        flex: 0 0 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; }
+        .card-wrapper .p-card .p-card-top .p-card-logo img {
+          width: 45%; }
+      .card-wrapper .p-card .p-card-top .p-card-name {
+        flex: 0 0 auto;
+        color: #213A6E;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        padding: 0 45px; }
+      .card-wrapper .p-card .p-card-top .p-card-office {
+        flex: 0 0 auto;
+        color: #777;
+        font-size: 14px;
+        padding: 0 45px; }
+    .card-wrapper .p-card .p-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: auto;
+      padding: 0 45px 45px; }
+    .card-wrapper .p-card .p-card-qr {
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .card-wrapper .p-card .p-card-border {
+      border: 1px solid #aaa; }
+    .card-wrapper .p-card .p-card-links {
+      flex: 1 0 50px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-content: center; }
+      .card-wrapper .p-card .p-card-links > div {
+        flex: 100%; }
+    .card-wrapper .p-card .p-card-contact {
+      display: flex;
+      justify-content: center; }
+      .card-wrapper .p-card .p-card-contact > div {
+        background: #213A6E;
+        border-radius: 25px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px; }
+        .card-wrapper .p-card .p-card-contact > div a {
+          color: #fff; }
+        .card-wrapper .p-card .p-card-contact > div i {
+          color: white;
+          font-size: 25px; }
+    .card-wrapper .p-card .p-card-social {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; }
+      .card-wrapper .p-card .p-card-social i {
+        color: #aaa;
+        font-size: 25px;
+        margin: 0 15px; }
+    .card-wrapper .p-card .p-card-add {
+      flex: 0 0 75px;
+      text-align: center; }
+    .card-wrapper .p-card .p-card-share a {
+      flex: 0 0 30px;
+      display: flex;
+      justify-content: space-between;
+      text-decoration: none;
+      font-weight: 100; }
+      .card-wrapper .p-card .p-card-share a i {
+        flex: 0 0 auto;
+        font-size: 30px; }
+      .card-wrapper .p-card .p-card-share a > div {
+        flex: 1 0 auto;
+        line-height: 1.1;
+        text-align: left;
+        margin-left: 10px; }
+      .card-wrapper .p-card .p-card-share a .p-card-qr-sm {
+        flex: 0 0 auto; }
+    @media screen and (min-width: 768px) {
+      .card-wrapper .p-card {
+        max-width: 350px;
+        max-height: 612.5px; } }
+    @media (orientation: landscape) and (max-height: 414px) {
+      .card-wrapper .p-card {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        max-width: initial; }
+        .card-wrapper .p-card .p-card-top {
+          flex: 0 0 45%;
+          padding-bottom: 45px;
+          max-height: 100%; }
+        .card-wrapper .p-card .p-card-content {
+          flex: 0 0 55%;
+          padding-top: 45px; } }
+
+/*# sourceMappingURL=vctheme.css.map */

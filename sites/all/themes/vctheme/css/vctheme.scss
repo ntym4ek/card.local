@@ -1,0 +1,188 @@
+$screen-sm-min:              768px;
+$screen-md-min:              992px;
+$screen-lg-min:              1460px;
+
+$tablet:              "screen and (min-width: #{$screen-sm-min})";
+$normal:              "screen and (min-width: #{$screen-md-min})";
+$wide:                "screen and (min-width: #{$screen-lg-min})";
+
+$text-color:      #333;
+$text-light:      #777;
+$text-muted:      #aaa;
+$gray-light:      #ccc;
+$card-width-max:  350px;
+$brand-blue:      #213A6E;
+
+* { outline: 0 !important; }
+
+body {
+  font-size: 15px; font-family: ubuntu,Helvetica,Arial,sans-serif;
+  color: $text-color; line-height: 1.428571429;
+  background-color: #d9d9d9;
+  overflow-y: scroll;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #343a40;
+  height: 80px;
+  .container {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 100%;
+  }
+  .branding {
+    img {
+      display: block;
+      height: 60px;
+    }
+  }
+  .menu {
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+.page {
+  .content {
+    background: #fff;
+    padding: 30px;
+  }
+}
+
+.card-wrapper {
+  display: flex; justify-content: center; align-items: center;
+  height: 100vh;
+  .p-card {
+    display: flex; flex: auto; flex-wrap: wrap; flex-direction: column;
+    background: white;
+    overflow: hidden;
+    height: 100%;
+    a {
+      color: $text-color;
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .p-card-top {
+      display: flex; flex-direction: column; justify-content: space-between;
+      flex: auto;
+      max-height: 40%;
+      padding-top: 45px;
+      .p-card-im {
+        flex: 1 0 auto;
+        display: flex;
+        margin-bottom: 15px;
+      }
+      .p-card-photo {
+        flex: 0 0 50%;
+        display: flex; justify-content: center; align-items: center;
+        height: 100%;
+      }
+      .p-card-logo {
+        flex: 0 0 50%;
+        display: flex; justify-content: center; align-items: center;
+        height: 100%;
+        img { width: 45%; }
+      }
+      .p-card-name {
+        flex: 0 0 auto;
+        color: $brand-blue; font-size: 24px; font-weight: 500;
+        margin-bottom: 10px;
+        padding: 0 45px;
+      }
+      .p-card-office {
+        flex: 0 0 auto;
+        color: $text-light; font-size: 14px;
+        padding: 0 45px;
+      }
+    }
+    .p-card-content {
+      display: flex; flex-direction: column; justify-content: space-between;
+      flex: auto;
+      padding: 0 45px 45px;
+    }
+    .p-card-qr {
+      flex: 1 0 auto;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .p-card-border {
+      border: 1px solid $text-muted;
+    }
+    .p-card-links {
+      flex: 1 0 50px;
+      display: flex; justify-content: center; flex-wrap: wrap; align-content: center;
+      > div { flex: 100%; }
+    }
+    .p-card-contact {
+      display: flex; justify-content: center;
+      > div {
+        background: $brand-blue;
+        border-radius: 25px;
+        width: 50px; height: 50px;
+        display: flex; justify-content: center; align-items: center;
+        margin: 0 20px;
+        a { color: #fff; }
+        i {
+          color: white; font-size: 25px;
+        }
+      }
+    }
+    .p-card-social {
+      display: flex; justify-content: center;
+      margin-top: 20px;
+      i {
+        color: $text-muted; font-size: 25px;
+        margin: 0 15px;
+      }
+    }
+    .p-card-add {
+      flex: 0 0 75px;
+      text-align: center;
+    }
+    .p-card-share a {
+      flex: 0 0 30px;
+      display: flex; justify-content: space-between; text-decoration: none;
+      font-weight: 100;
+      i {
+        flex: 0 0 auto;
+        font-size: 30px;
+      }
+      > div {
+        flex: 1 0 auto;
+        line-height: 1.1; text-align: left;
+        margin-left: 10px;
+      }
+      .p-card-qr-sm {
+        flex: 0 0 auto;
+      }
+    }
+
+    @media #{$tablet} {
+      max-width: $card-width-max;
+      max-height: $card-width-max*1.75;
+    }
+    @media (orientation: landscape) and (max-height: 414px) {
+      flex-direction: row; flex-wrap: nowrap;
+      max-width: initial;
+      .p-card-top {
+        flex: 0 0 45%;
+        padding-bottom: 45px;
+        max-height: 100%;
+      }
+      .p-card-content {
+        flex: 0 0 55%;
+        padding-top: 45px;
+      }
+    }
+  }
+}
