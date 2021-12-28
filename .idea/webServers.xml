@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ad5b6942-21dc-4994-86af-804ba7e3fc16" name="card.kccc.ru" url="http://card.kccc.ru">
+        <fileTransfer host="ftp.kccc.nichost.ru" port="21" rootFolder="/card.kccc.ru/docs">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
