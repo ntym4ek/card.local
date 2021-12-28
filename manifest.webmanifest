@@ -1,0 +1,32 @@
+{
+    "theme_color": "#f69435",
+    "background_color": "#f69435",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "VCard",
+    "short_name": "VCard",
+    "description": "\u041f\u0440\u0438\u0447\u0438\u043d\u044b \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u0437\u0430\u044f\u0432\u043a\u0438",
+    "icons": [
+        {
+            "src": "/sites/default/files/logo/192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/sites/default/files/logo/256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/sites/default/files/logo/384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/sites/default/files/logo/512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

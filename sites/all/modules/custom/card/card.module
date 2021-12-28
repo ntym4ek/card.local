@@ -6,12 +6,27 @@
  */
 function card_menu()
 {
+  $items['card'] = array(
+    'page callback' => 'card_page',
+    'page arguments' => array(1, 2),
+//    'access callback' => true,
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_NORMAL_ITEM,
+  );
   $items['card/%'] = array(
     'page callback' => 'card_page',
     'page arguments' => array(1, 2),
     'access callback' => true,
+//    'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
   );
+//  $items['card/%user/edit'] = array(
+//    'page callback' => 'drupal_get_form',
+//    'page arguments' => array('user_profile_form', 1, 'main'),
+//    'access callback' => true,
+//    'type' => MENU_CALLBACK,
+//    'file' => '../../../../../modules/user/user.pages.inc',
+//  );
 
   return $items;
 }
@@ -25,6 +40,23 @@ function card_menu_alter(&$items)
   $items['node']['page callback'] = 'card_empty_front_page_callback';
 }
 
+
+/**
+ * hook_module_implements_alter
+ */
+//function card_module_implements_alter(&$implementations, $hook)
+//{
+//  if (in_array($hook, ['form_alter'])) {                                        // Name of the hook.
+//    // card module - last
+//    $module = 'card';
+//    if (isset($implementations[$module])) {
+//      $group = $implementations[$module];
+//      unset($implementations[$module]);
+//      $implementations[$module] = $group;
+//    }
+//  }
+//}
+
 /**
  * menu callback
  * убрать материалы с главной
@@ -32,69 +64,98 @@ function card_menu_alter(&$items)
 function card_empty_front_page_callback()
 {
   drupal_set_title('');
-  return [];
+  $link = user_is_logged_in() ? 'user/' . $GLOBALS['user']->uid . '/edit/main' : 'user/register';
+  $output = '
+    <div class="welcome-wrapper">
+      <div class="welcome">
+        <div>
+            <h1>Приветствую!<br>Здесь Вы можете создать бесплатную электронную карту</h1>
+            <a href="' . $link . '" class="btn btn-white btn-wide">Попробуем создать</a>
+        </div>
+      </div>
+      <div class="mockup">
+          <img src="/sites/all/themes/vctheme/images/hand.png" alt="card mockup">
+      </div>
+    </div>
+  ';
+  return $output;
 }
 
-function card_page($uid, $share = null)
+function card_page($uid = null, $share = null)
 {
-  if (is_numeric($uid)) {
+  if (!is_numeric($uid)) $uid = $GLOBALS['user']->uid;
+  if ($uid) {
     $card = card_get_card($uid, $share);
 
     // todo добавить кнопку Добавить в контакты
     // https://developers.google.com/people/quickstart/js#python-2.x
     // https://question-it.com/questions/818809/dobavit-v-kontakty-naprimer-knopka-dobavit-v-kalendar-html-parametr-ajax
 
+
+    // todo добавление на рабочий стол и автономная работа
+    // https://netology.ru/blog/progressive-web-apps
+
+
     return $card;
   } else {
-    drupal_not_found();
+    drupal_goto('<front>');
   }
 }
+
 
 /**
  * вернуть рендер массив с карточкой
  */
-function card_get_card($uid, $share)
+function card_get_card($uid, $share = false)
 {
   if (is_numeric($uid)) {
-    $user_wr = entity_metadata_wrapper('user', $uid);
+    $name = $surname = $company = $office = $phone = $email = $wa = $fb = $in = $vk = '';
     $photo_uri = 'photo/no_photo_man.jpg';
+    $user_wr = entity_metadata_wrapper('user', $uid);
 
-    $name = $user_wr->field_user_name->value();
-    $surname = $user_wr->field_user_surname->value();
-    $phone = $user_wr->field_user_phone->value();
-    $company = $user_wr->field_user_company->value();
-    $office = $user_wr->field_user_office->value();
+    if ($profile_main = profile2_load_by_user($user_wr->value(), 'main')) {
+      $main_wr = entity_metadata_wrapper('profile2', $profile_main);
+      $name = $main_wr->field_user_name->value();
+      $surname = $main_wr->field_user_surname->value();
+      $email = $main_wr->field_user_email->value();
+      $phone = $main_wr->field_user_phone->value();
+      $wa = $main_wr->field_user_wa->value();
+      $fb = $main_wr->field_user_fb->value();
+      $in = $main_wr->field_user_in->value();
+      $vk = $main_wr->field_user_vk->value();
+      $company = $main_wr->field_company_name->value();
+      $office = $main_wr->field_company_office->value();
+      if ($main_wr->field_user_photo->value()) {
+        $photo_uri = $main_wr->field_user_photo->value()['uri'];
+      }
+      if ($main_wr->field_company_logo->value()) {
+        $logo_uri = $main_wr->field_company_logo->value()['uri'];
+      }
+    }
 
-    if ($user_wr->value()->picture) {
-      $photo_uri = $user_wr->value()->picture['uri'];
-    }
-    if ($user_wr->field_user_logo->value()) {
-      $logo_uri = $user_wr->field_user_logo->value()['uri'];
-    }
     $photo_url = image_style_url('visit_card_photo', $photo_uri);
-    $logo_url = $logo_uri ? image_style_url('visit_card_photo', $logo_uri) : '';
-
+    $logo_url = isset($logo_uri) ? image_style_url('visit_card_photo', $logo_uri) : '';
 
     $qr_markup = theme('qr_codes', array('data' => $GLOBALS["base_url"] . "/card/$uid", 'width' => 200, 'height' => 200, 'margin' => 0, 'image_style' => ''));
 
     return [
       'uid' => $uid,
       'name' => "$name $surname",
-      'office' => "$office<br>$company",
+      'office' => $office,
+      'company' => $company,
       'photo_url' => $photo_url,
       'logo_url' => $logo_url,
       'qr' => $qr_markup,
       'phone' => $phone,
-      'email' => $user_wr->mail->value(),
+      'email' => $email,
+      'wa' => $wa,
+      'fb' => $fb,
+      'in' => $in,
+      'vk' => $vk,
       'share' => $share ? true : false,
+      'edit' => arg(0) == 'user' ? true : false,
       '#theme' => 'visit_card',
     ];
   }
 }
 
-function card_form_alter(&$form, $form_state, $form_id)
-{
-  if ($form_id == '') {
-
-  }
-}

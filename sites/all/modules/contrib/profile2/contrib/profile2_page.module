@@ -269,7 +269,7 @@ function profile2_page_field_extra_fields() {
 function profile2_page_user_view($account, $view_mode, $langcode) {
   $links = array();
   foreach (profile2_get_types() as $type_name => $type) {
-    if ($type->data['use_page'] && $profile = profile2_load_by_user($account, $type_name)) {
+    if (!empty($type->data['use_page']) && $profile = profile2_load_by_user($account, $type_name)) {
       if (profile2_access('view', $profile)) {
         $links[] = array(
           '#type' => 'link',

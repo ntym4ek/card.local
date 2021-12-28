@@ -22,5 +22,5 @@ regions[page_bottom] = Page Bottom
 ;; Scripts
 ;;;;;;;;;;;;;;;;;;;;;
 
-scripts[] = 'js/vctheme.css'
+scripts[] = 'js/vctheme.js'
 
