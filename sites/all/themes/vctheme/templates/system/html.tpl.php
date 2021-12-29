@@ -3,7 +3,7 @@
 
 <head>
   <link rel="profile" href="<?php print $grddl_profile; ?>" />
-  <link rel="manifest" href="/manifest.webmanifest">
+<!--  <link rel="manifest" href="/manifest.webmanifest"> установка не нужна -->
 
   <meta name="msapplication-TileImage" content="/sites/default/files/logo/192.png">
   <meta name="msapplication-TileColor" content="#2F3BA2">

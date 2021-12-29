@@ -93,6 +93,9 @@ $brand-blue-hover: lighten($brand-blue, 15%);
   overflow: hidden;
   background: radial-gradient(ellipse 70% 50% at 30% 70%, #2352ae, #112854);
   height: 100%;
+  .page {
+    overflow: hidden; // обрезать руку
+  }
   .container {
     height: 100%;
     > .content { height: 100%; }
@@ -347,24 +350,28 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     .p-card-top {
       display: flex; flex-direction: column; justify-content: space-between;
-      flex: auto;
+      flex: 0 0 45%;
       max-height: 45%;
       padding-top: 45px;
       .p-card-im {
         flex: 1 0 auto;
         display: flex;
-        margin-bottom: 15px;
-        > div {
+        margin-bottom: 15px; padding: 0 12%;
+        .p-card-photo {
           flex: 0 0 50%;
-          display:flex; justify-content: center;
+          display:flex; justify-content: flex-start;
+        }
+        .p-card-logo {
+          flex: 0 0 50%;
+          display:flex; justify-content: flex-end;
         }
       }
-      .p-card-photo {
+      .p-card-photo div {
         display: flex; justify-content: center; align-items: center;
-        height: 130px; width: 110px;
+        height: 100%; width: 110px;
         overflow: hidden;
       }
-      .p-card-logo {
+      .p-card-logo div {
         display: flex; justify-content: center; align-items: center;
         height: 100%;
         img { width: 60%; }
@@ -373,20 +380,20 @@ $brand-blue-hover: lighten($brand-blue, 15%);
         flex: 0 0 auto;
         color: $brand-blue; font-size: 24px; font-weight: 700;
         margin-bottom: 10px;
-        padding: 0 45px;
+        padding: 0 12%;
       }
       .p-card-company-office,
       .p-card-company-name {
         flex: 0 0 auto;
-        color: $text-light; font-size: 14px;
-        padding: 0 45px;
-        height: 20px; min-width: 1px;
+        color: $text-light; font-size: 15px;
+        padding: 0 12%;
+        min-width: 1px;
       }
     }
     .p-card-content {
       display: flex; flex-direction: column; justify-content: space-between;
       flex: auto;
-      padding: 0 45px 45px;
+      padding: 0 12% 45px;
     }
     .p-card-qr {
       flex: 1 0 auto;
@@ -426,11 +433,11 @@ $brand-blue-hover: lighten($brand-blue, 15%);
       .filled i { display: inline; }
     }
     .p-card-add {
-      flex: 0 0 60px;
+      flex: 0 0 40px;
       text-align: center;
     }
     .p-card-share {
-      flex: 0 0 15%;
+      flex: 0 0 20%;
       a {
         flex: 0 0 30px;
         display: flex; justify-content: space-between; text-decoration: none;
@@ -451,7 +458,7 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     .p-card-make-icon,
     .p-card-make {
-      position: absolute; bottom: 15px; left: 0; right: 0;
+      position: absolute; bottom: 25px; left: 0; right: 0;
       text-align: center;
       a {
         color: $text-muted; font-size: 14px; font-weight: 300;
@@ -554,15 +561,12 @@ $brand-blue-hover: lighten($brand-blue, 15%);
 .popover {
   transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
   visibility: hidden;  opacity: 0;
-  &.pop {
-    bottom: 10px; opacity: 1; visibility: visible;
-  }
 
   box-sizing: border-box;
   margin: 0; padding: 0;
   color: #000000d9; font-size: 14px; font-weight: 400; line-height: 1.5715; text-align: left;
   list-style: none;
-  position: absolute; bottom: 100px; left: 10px; right: 10px; z-index: 1030;
+  position: absolute; left: 10px; right: 10px; z-index: 1030;
   white-space: normal; cursor: auto; user-select: text;
   &:after {
     position: absolute;
@@ -603,14 +607,45 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     border-radius: 2px;
     box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #00000029;
   }
-  &.top-right {
-    padding-bottom: 10px;
+
+
+  &.bottom-right {
+    padding-bottom: 10px; bottom: 100px;
     .popover-arrow {
-      right: 16px; bottom: 0;
+      right: 20px; bottom: 0;
       span {
         box-shadow: 3px 3px 7px #00000012;
         transform: translateY(-5px) rotate(45deg);
       }
+    }
+    &.pop {
+      bottom: 10px; opacity: 1; visibility: visible;
+    }
+  }
+  &.bottom-center {
+    padding-bottom: 10px; bottom: 100px;
+    .popover-arrow {
+      left: 50%; bottom: 0;
+      span {
+        box-shadow: 3px 3px 7px #00000012;
+        transform: translateY(-5px) rotate(45deg);
+      }
+    }
+    &.pop {
+      bottom: 10px; opacity: 1; visibility: visible;
+    }
+  }
+  &.top-right {
+    padding-top: 10px; top: 100px;
+    .popover-arrow {
+      right: 12px; top: 0;
+      span {
+        box-shadow: 3px 3px 7px #00000012;
+        transform: translateY(5px) rotate(45deg);
+      }
+    }
+    &.pop {
+      top: 10px; opacity: 1; visibility: visible;
     }
   }
 }

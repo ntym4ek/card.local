@@ -171,16 +171,88 @@
         $('.image-upload-wrap').removeClass('image-dropping');
       });
 
-      // popover
-      $(".p-card-make-icon").on("click", function (e) {
-        $(".popover").addClass("pop");
-        e.stopPropagation();
-      });
-      $("body").on("click", function () {
-        if ($(".popover").hasClass("pop")) {
-          $(".popover").removeClass("pop");
+      // определение клиента ---------------------------------------------------
+      var isMobile = {
+        Android: function () {
+          return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+          return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+          return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Yandex: function () {
+          return navigator.userAgent.match(/YaBrowser/i);
+        },
+        Chrome: function () {
+          return navigator.userAgent.match(/Mobile Safari/i);
+        },
+        Samsung: function () {
+          return navigator.userAgent.match(
+            /SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[A|N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i,
+          );
+        },
+        Windows: function () {
+          return (
+            navigator.userAgent.match(/IEMobile/i) ||
+            navigator.userAgent.match(/WPDesktop/i)
+          );
+        },
+        any: function () {
+          return (
+            isMobile.Android() ||
+            isMobile.BlackBerry() ||
+            isMobile.iOS() ||
+            isMobile.Opera() ||
+            isMobile.Windows()
+          );
+        },
+      };
+
+      // use this to check if the user is already using your PWA - no need to prompt if in standalone
+      function isStandalone() {
+        const isStandalone = window.matchMedia("(display-mode: standalone)").matches;
+        if (document.referrer.startsWith("android-app://")) {
+          return true; // Trusted web app
+        } else if ("standalone" in navigator || isStandalone) {
+          return true;
         }
-      });
+        return false;
+      }
+
+      // popover ---------------------------------------------------------------
+      if ($(".p-card-make-icon").is("div")) {
+        alert(navigator.userAgent);
+        if (navigator.userAgent.match(/YaBrowser/i)) {
+          $(".popover").addClass("popover bottom-right");
+          $(".popover-inner-content").html("Для добавления иконки быстрого доступа на экран устройства нажмите <i class=\"fas fa-ellipsis-v\"></i> , а затем \"Добавить ярлык\"");
+        } else {
+          if (navigator.userAgent.match(/Mobile Safari/i)) {
+            $(".popover").addClass("popover top-right");
+            $(".popover-inner-content").html("Для добавления иконки быстрого доступа на экран устройства нажмите <i class=\"fas fa-ellipsis-v\"></i> , а затем \"Добавить на гл. экран\"");
+          } else {
+            if (navigator.userAgent.match(/iPhone|iPad/i)) {
+              $(".popover").addClass("popover bottom-center");
+              $(".popover-inner-content").html("Для добавления иконки быстрого доступа на экран устройства нажмите <i class=\"fas fa-ellipsis-v\"></i> , а затем \"Добавить на гл. экран\"");
+            }
+          }
+        }
+
+        $(".p-card-make-icon").on("click", function (e) {
+          $(".popover").addClass("pop");
+          e.stopPropagation();
+        });
+        $("body").on("click", function () {
+          if ($(".popover").hasClass("pop")) {
+            $(".popover").removeClass("pop");
+          }
+        });
+      }
+
     }
   };
 })(jQuery);

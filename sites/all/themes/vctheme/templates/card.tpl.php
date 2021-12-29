@@ -5,13 +5,13 @@
     <div class="p-card-top">
 
       <div class="p-card-im">
-        <div>
-          <div class="p-card-photo">
+        <div class="p-card-photo">
+          <div>
             <img src="<?php print $element['photo_url']; ?>" />
           </div>
         </div>
-        <div>
-          <div class="p-card-logo">
+        <div class="p-card-logo">
+            <div>
             <? if ($element['logo_url']): ?>
               <img src="<?php print $element['logo_url']; ?>" />
             <? endif; ?>
@@ -32,7 +32,7 @@
         </div>
       </div>
         <div class="p-card-make-icon"><a href="#">быстрый доступ к визитке</a></div>
-        <div class="popover top-right">
+        <div class="popover">
           <div class="popover-content">
             <div class="popover-arrow"><span></span></div>
             <div class="popover-inner" role="tooltip">

@@ -9,7 +9,6 @@ function card_menu()
   $items['card'] = array(
     'page callback' => 'card_page',
     'page arguments' => array(1, 2),
-//    'access callback' => true,
     'access callback' => 'user_is_logged_in',
     'type' => MENU_NORMAL_ITEM,
   );
@@ -17,7 +16,6 @@ function card_menu()
     'page callback' => 'card_page',
     'page arguments' => array(1, 2),
     'access callback' => true,
-//    'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
   );
 //  $items['card/%user/edit'] = array(

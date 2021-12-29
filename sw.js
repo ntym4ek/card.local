@@ -26,8 +26,8 @@ self.addEventListener('install', (event) => {
         '/misc/favicon.ico',
         '/sites/default/files/logo/152.png',
         '/app.js',
-        '/sw.js',
-        '/manifest.webmanifest'
+        '/sw.js'
+        // '/manifest.webmanifest'
       ]);
     })
   );

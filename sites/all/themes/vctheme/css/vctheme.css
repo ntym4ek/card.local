@@ -69,6 +69,8 @@ body {
   overflow: hidden;
   background: radial-gradient(ellipse 70% 50% at 30% 70%, #2352ae, #112854);
   height: 100%; }
+  .front .page {
+    overflow: hidden; }
   .front .container {
     height: 100%; }
     .front .container > .content {
@@ -320,30 +322,35 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: auto;
+      flex: 0 0 45%;
       max-height: 45%;
       padding-top: 45px; }
       .card-wrapper .p-card .p-card-top .p-card-im {
         flex: 1 0 auto;
         display: flex;
-        margin-bottom: 15px; }
-        .card-wrapper .p-card .p-card-top .p-card-im > div {
+        margin-bottom: 15px;
+        padding: 0 12%; }
+        .card-wrapper .p-card .p-card-top .p-card-im .p-card-photo {
           flex: 0 0 50%;
           display: flex;
-          justify-content: center; }
-      .card-wrapper .p-card .p-card-top .p-card-photo {
+          justify-content: flex-start; }
+        .card-wrapper .p-card .p-card-top .p-card-im .p-card-logo {
+          flex: 0 0 50%;
+          display: flex;
+          justify-content: flex-end; }
+      .card-wrapper .p-card .p-card-top .p-card-photo div {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 130px;
+        height: 100%;
         width: 110px;
         overflow: hidden; }
-      .card-wrapper .p-card .p-card-top .p-card-logo {
+      .card-wrapper .p-card .p-card-top .p-card-logo div {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%; }
-        .card-wrapper .p-card .p-card-top .p-card-logo img {
+        .card-wrapper .p-card .p-card-top .p-card-logo div img {
           width: 60%; }
       .card-wrapper .p-card .p-card-top .p-card-name {
         flex: 0 0 auto;
@@ -351,21 +358,20 @@ body {
         font-size: 24px;
         font-weight: 700;
         margin-bottom: 10px;
-        padding: 0 45px; }
+        padding: 0 12%; }
       .card-wrapper .p-card .p-card-top .p-card-company-office,
       .card-wrapper .p-card .p-card-top .p-card-company-name {
         flex: 0 0 auto;
         color: #999;
-        font-size: 14px;
-        padding: 0 45px;
-        height: 20px;
+        font-size: 15px;
+        padding: 0 12%;
         min-width: 1px; }
     .card-wrapper .p-card .p-card-content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       flex: auto;
-      padding: 0 45px 45px; }
+      padding: 0 12% 45px; }
     .card-wrapper .p-card .p-card-qr {
       flex: 1 0 auto;
       display: flex;
@@ -412,10 +418,10 @@ body {
       .card-wrapper .p-card .p-card-social .filled i {
         display: inline; }
     .card-wrapper .p-card .p-card-add {
-      flex: 0 0 60px;
+      flex: 0 0 40px;
       text-align: center; }
     .card-wrapper .p-card .p-card-share {
-      flex: 0 0 15%; }
+      flex: 0 0 20%; }
       .card-wrapper .p-card .p-card-share a {
         flex: 0 0 30px;
         display: flex;
@@ -435,7 +441,7 @@ body {
     .card-wrapper .p-card .p-card-make-icon,
     .card-wrapper .p-card .p-card-make {
       position: absolute;
-      bottom: 15px;
+      bottom: 25px;
       left: 0;
       right: 0;
       text-align: center; }
@@ -554,17 +560,12 @@ body {
   text-align: left;
   list-style: none;
   position: absolute;
-  bottom: 100px;
   left: 10px;
   right: 10px;
   z-index: 1030;
   white-space: normal;
   cursor: auto;
   user-select: text; }
-  .popover.pop {
-    bottom: 10px;
-    opacity: 1;
-    visibility: visible; }
   .popover:after {
     position: absolute;
     background: rgba(255, 255, 255, 0.01);
@@ -603,13 +604,44 @@ body {
     background-clip: padding-box;
     border-radius: 2px;
     box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #00000029; }
-  .popover.top-right {
-    padding-bottom: 10px; }
-    .popover.top-right .popover-arrow {
-      right: 16px;
+  .popover.bottom-right {
+    padding-bottom: 10px;
+    bottom: 100px; }
+    .popover.bottom-right .popover-arrow {
+      right: 20px;
       bottom: 0; }
-      .popover.top-right .popover-arrow span {
+      .popover.bottom-right .popover-arrow span {
         box-shadow: 3px 3px 7px #00000012;
         transform: translateY(-5px) rotate(45deg); }
+    .popover.bottom-right.pop {
+      bottom: 10px;
+      opacity: 1;
+      visibility: visible; }
+  .popover.bottom-center {
+    padding-bottom: 10px;
+    bottom: 100px; }
+    .popover.bottom-center .popover-arrow {
+      left: 50%;
+      bottom: 0; }
+      .popover.bottom-center .popover-arrow span {
+        box-shadow: 3px 3px 7px #00000012;
+        transform: translateY(-5px) rotate(45deg); }
+    .popover.bottom-center.pop {
+      bottom: 10px;
+      opacity: 1;
+      visibility: visible; }
+  .popover.top-right {
+    padding-top: 10px;
+    top: 100px; }
+    .popover.top-right .popover-arrow {
+      right: 12px;
+      top: 0; }
+      .popover.top-right .popover-arrow span {
+        box-shadow: 3px 3px 7px #00000012;
+        transform: translateY(5px) rotate(45deg); }
+    .popover.top-right.pop {
+      top: 10px;
+      opacity: 1;
+      visibility: visible; }
 
 /*# sourceMappingURL=vctheme.css.map */
