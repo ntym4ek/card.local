@@ -15,7 +15,7 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
-  <script src="/app.js"></script>
+<!--  <script src="/app.js"></script>-->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
 <?php print $page_top; ?>

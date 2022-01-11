@@ -69,7 +69,13 @@
             <div class="p-card-qr-sm"><img src="/sites/all/themes/vctheme/images/qr_sm.png" /></div>
           </a>
         </div>
-        <div class="p-card-make"><a href="/">хочу такую же</a></div>
+        <div class="p-card-make">
+          <? if ($element['logged']): ?>
+            <a href="/user/<? print $element['uid'] ?>/edit/main"><img src="/sites/all/themes/vctheme/logo.png">редактировать</a>
+          <? else: ?>
+            <a href="/"><img src="/sites/all/themes/vctheme/logo.png">хочу такую же</a>
+          <? endif; ?>
+        </div>
       <? endif; ?>
     </div>
 

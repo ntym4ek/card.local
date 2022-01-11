@@ -182,7 +182,7 @@ $brand-blue-hover: lighten($brand-blue, 15%);
 .btn {
   color: #fff; font-size: 15px; font-weight: normal; text-align: center; line-height: 1.428571429; text-decoration: none; white-space: nowrap;
   display: inline-block;
-  margin-bottom: 0; padding: 6px 15px;
+  margin-bottom: 0; padding: 10px 15px;
   vertical-align: middle;
   touch-action: manipulation; cursor: pointer; user-select: none;
   border: 1px solid transparent; border-radius: 2px;
@@ -267,7 +267,7 @@ $brand-blue-hover: lighten($brand-blue, 15%);
   }
   .mockup {
     margin: 60px 0;
-    .card-wrapper { height: 600px; }
+    .card-wrapper { height: 630px; }
   }
   .p-card {
     border: 1px solid #ccc;
@@ -346,13 +346,12 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     img {
       display: block;
-      max-height: 100%;
+      max-height: 100%; max-width: 100%;
     }
     .p-card-top {
       display: flex; flex-direction: column; justify-content: space-between;
-      flex: 0 0 45%;
-      max-height: 45%;
-      padding-top: 45px;
+      flex: 0 1 37%;
+      padding-top: 8%;
       .p-card-im {
         flex: 1 0 auto;
         display: flex;
@@ -367,12 +366,12 @@ $brand-blue-hover: lighten($brand-blue, 15%);
         }
       }
       .p-card-photo div {
-        display: flex; justify-content: center; align-items: center;
-        height: 100%; width: 110px;
+        display: flex; align-items: center;
+        height: 100%; max-width: 100%;
         overflow: hidden;
       }
       .p-card-logo div {
-        display: flex; justify-content: center; align-items: center;
+        display: flex; justify-content: flex-end; align-items: center;
         height: 100%;
         img { width: 60%; }
       }
@@ -392,8 +391,8 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     .p-card-content {
       display: flex; flex-direction: column; justify-content: space-between;
-      flex: auto;
-      padding: 0 12% 45px;
+      flex: 1 0 45%;
+      padding: 0 12% 10%;
     }
     .p-card-qr {
       flex: 1 0 auto;
@@ -411,14 +410,14 @@ $brand-blue-hover: lighten($brand-blue, 15%);
       display: flex; justify-content: center;
       > div {
         background: $brand-blue;
-        border-radius: 25px;
-        width: 50px; height: 50px;
+        border-radius: 30px;
+        width: 60px; height: 60px;
         display: none; justify-content: center; align-items: center;
         margin: 0 20px;
         &.filled { display: flex; }
         a { color: #fff; }
         i {
-          color: white; font-size: 25px;
+          color: white; font-size: 26px;
         }
       }
     }
@@ -426,14 +425,14 @@ $brand-blue-hover: lighten($brand-blue, 15%);
       display: flex; justify-content: center;
       margin-top: 20px;
       i {
-        color: $text-light; font-size: 25px;
+        color: $text-light; font-size: 35px;
         margin: 0 15px;
         display: none;
       }
       .filled i { display: inline; }
     }
     .p-card-add {
-      flex: 0 0 40px;
+      flex: 0 0 0px;
       text-align: center;
     }
     .p-card-share {
@@ -462,6 +461,12 @@ $brand-blue-hover: lighten($brand-blue, 15%);
       text-align: center;
       a {
         color: $text-muted; font-size: 14px; font-weight: 300;
+      }
+      img {
+        width: 25px; height: 25px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
       }
     }
 
@@ -625,7 +630,7 @@ $brand-blue-hover: lighten($brand-blue, 15%);
   &.bottom-center {
     padding-bottom: 10px; bottom: 100px;
     .popover-arrow {
-      left: 50%; bottom: 0;
+      left: 49%; bottom: 0;
       span {
         box-shadow: 3px 3px 7px #00000012;
         transform: translateY(-5px) rotate(45deg);

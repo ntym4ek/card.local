@@ -161,7 +161,7 @@ body {
   white-space: nowrap;
   display: inline-block;
   margin-bottom: 0;
-  padding: 6px 15px;
+  padding: 10px 15px;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
@@ -247,7 +247,7 @@ body {
 [id^=user-profile-form] .mockup {
   margin: 60px 0; }
   [id^=user-profile-form] .mockup .card-wrapper {
-    height: 600px; }
+    height: 630px; }
 [id^=user-profile-form] .p-card {
   border: 1px solid #ccc;
   box-shadow: 1px 5px 10px #ddd; }
@@ -317,14 +317,14 @@ body {
       text-decoration: none; }
     .card-wrapper .p-card img {
       display: block;
-      max-height: 100%; }
+      max-height: 100%;
+      max-width: 100%; }
     .card-wrapper .p-card .p-card-top {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: 0 0 45%;
-      max-height: 45%;
-      padding-top: 45px; }
+      flex: 0 1 37%;
+      padding-top: 8%; }
       .card-wrapper .p-card .p-card-top .p-card-im {
         flex: 1 0 auto;
         display: flex;
@@ -340,14 +340,13 @@ body {
           justify-content: flex-end; }
       .card-wrapper .p-card .p-card-top .p-card-photo div {
         display: flex;
-        justify-content: center;
         align-items: center;
         height: 100%;
-        width: 110px;
+        max-width: 100%;
         overflow: hidden; }
       .card-wrapper .p-card .p-card-top .p-card-logo div {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         height: 100%; }
         .card-wrapper .p-card .p-card-top .p-card-logo div img {
@@ -370,8 +369,8 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: auto;
-      padding: 0 12% 45px; }
+      flex: 1 0 45%;
+      padding: 0 12% 10%; }
     .card-wrapper .p-card .p-card-qr {
       flex: 1 0 auto;
       display: flex;
@@ -392,9 +391,9 @@ body {
       justify-content: center; }
       .card-wrapper .p-card .p-card-contact > div {
         background: #213A6E;
-        border-radius: 25px;
-        width: 50px;
-        height: 50px;
+        border-radius: 30px;
+        width: 60px;
+        height: 60px;
         display: none;
         justify-content: center;
         align-items: center;
@@ -405,20 +404,20 @@ body {
           color: #fff; }
         .card-wrapper .p-card .p-card-contact > div i {
           color: white;
-          font-size: 25px; }
+          font-size: 26px; }
     .card-wrapper .p-card .p-card-social {
       display: flex;
       justify-content: center;
       margin-top: 20px; }
       .card-wrapper .p-card .p-card-social i {
         color: #999;
-        font-size: 25px;
+        font-size: 35px;
         margin: 0 15px;
         display: none; }
       .card-wrapper .p-card .p-card-social .filled i {
         display: inline; }
     .card-wrapper .p-card .p-card-add {
-      flex: 0 0 40px;
+      flex: 0 0 0px;
       text-align: center; }
     .card-wrapper .p-card .p-card-share {
       flex: 0 0 20%; }
@@ -450,6 +449,13 @@ body {
         color: #ccc;
         font-size: 14px;
         font-weight: 300; }
+      .card-wrapper .p-card .p-card-make-icon img,
+      .card-wrapper .p-card .p-card-make img {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px; }
     @media screen and (min-width: 768px) {
       .card-wrapper .p-card {
         max-height: 650px;
@@ -621,7 +627,7 @@ body {
     padding-bottom: 10px;
     bottom: 100px; }
     .popover.bottom-center .popover-arrow {
-      left: 50%;
+      left: 49%;
       bottom: 0; }
       .popover.bottom-center .popover-arrow span {
         box-shadow: 3px 3px 7px #00000012;

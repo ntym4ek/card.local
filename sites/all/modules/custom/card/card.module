@@ -138,6 +138,7 @@ function card_get_card($uid, $share = false)
 
     return [
       'uid' => $uid,
+      'logged' => $uid == $GLOBALS['user']->uid,
       'name' => "$name $surname",
       'office' => $office,
       'company' => $company,

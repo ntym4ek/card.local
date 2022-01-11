@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="card.kccc.ru" uploadOnCheckin="ad5b6942-21dc-4994-86af-804ba7e3fc16">
+  <component name="PublishConfigData" serverName="b.cards" uploadOnCheckin="ad5b6942-21dc-4994-86af-804ba7e3fc16">
     <serverData>
-      <paths name="card.kccc.ru">
+      <paths name="b.cards">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
@@ -73,6 +73,6 @@
         </serverdata>
       </paths>
     </serverData>
-    <option name="myUploadOnCheckinName" value="card.kccc.ru" />
+    <option name="myUploadOnCheckinName" value="b.cards" />
   </component>
 </project>
