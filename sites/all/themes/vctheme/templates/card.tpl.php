@@ -60,7 +60,7 @@
         </div>
       </div>
         <div class="p-card-add">
-<!--          <span class="add-card">Добавить в контакты</span>-->
+          <a href="/card/<? print $element['uid']; ?>/vcard">Добавить в контакты</a>
         </div>
         <div class="p-card-share">
           <a href="/card/<? print $element['uid']; ?>/share">

@@ -1,0 +1,63 @@
+<?
+
+use JeroenDesloovere\VCard\VCard;
+
+$modulePath = drupal_get_path('module', 'vcard');
+require_once $modulePath.DIRECTORY_SEPARATOR.'classes/vcard/src/VCard.php';
+require_once $modulePath.DIRECTORY_SEPARATOR.'classes/vcard/src/VCardException.php';
+require_once $modulePath.DIRECTORY_SEPARATOR.'classes/Transliterator/src/Behat/Transliterator/Transliterator.php';
+
+
+function vcard_vcard_download($uid)
+{
+  $user_wr = entity_metadata_wrapper('user', $uid);
+
+  if ($profile_main = profile2_load_by_user($user_wr->value(), 'main')) {
+    $main_wr = entity_metadata_wrapper('profile2', $profile_main);
+    $name = $main_wr->field_user_name->value();
+    $surname = $main_wr->field_user_surname->value();
+    $email = $main_wr->field_user_email->value();
+    $phone = $main_wr->field_user_phone->value();
+    $company = $main_wr->field_company_name->value();
+    $office = $main_wr->field_company_office->value();
+    if ($main_wr->field_user_photo->value()) {
+      $photo_uri = $main_wr->field_user_photo->value()['uri'];
+    }
+    if ($main_wr->field_company_logo->value()) {
+      $logo_uri = $main_wr->field_company_logo->value()['uri'];
+    }
+    $photo_url = image_style_url('visit_card_photo', $photo_uri);
+//    $logo_url = isset($logo_uri) ? image_style_url('visit_card_photo', $logo_uri) : '';
+
+    $vcard = new VCard();
+
+    $additional = $prefix = $suffix = '';
+
+    // add personal data
+    $vcard->addName($surname, $name, $additional, $prefix, $suffix);
+
+    // add work data
+    if ($company) $vcard->addCompany($company);
+    if ($office) $vcard->addJobtitle($office);
+    if ($email) $vcard->addEmail($email);
+    if ($phone) $vcard->addPhoneNumber($phone, 'PREF;WORK');
+
+    if ($photo_url) $vcard->addPhoto($photo_url);
+
+    //    $vcard->addLogo($logo_url); // лого пользователя, а не компании
+    //    $vcard->addURL('http://www.jeroendesloovere.be');
+    //    $vcard->addRole('Data Protection Officer');
+    //    $vcard->addPhoneNumber(123456789, 'WORK');
+    //    $vcard->addAddress(NULL, NULL, 'street', 'worktown', NULL, 'workpostcode', 'Belgium');
+    //    $vcard->addLabel('street, worktown, workpostcode Belgium');
+
+
+    // return vcard as a string
+    //return $vcard->getOutput();
+
+    // return vcard as a download
+    return $vcard->download();
+  } else return false;
+}
+
+

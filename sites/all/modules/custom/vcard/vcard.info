@@ -1,0 +1,4 @@
+name = Поддержка VCard
+description = Генерация vcf файла по ссылке в визитке
+package = Custom
+core = 7.x

@@ -143,22 +143,24 @@ function ext_user_user_profile_form_submit ($form, &$form_state)
  */
 function ext_user_form_user_register_form_alter(&$form, &$form_state)
 {
-  $form['#prefix'] = '<div class="user-auth-form-wrapper">' .
-        '<h1>Для создания электронной визитной карты укажите Ваш e-mail</h1>';
-  $form['#suffix'] = '</div>';
+  if (!user_has_role(ROLE_ADMIN)) {
+    $form['#prefix'] = '<div class="user-auth-form-wrapper">' .
+          '<h1>Для создания электронной визитной карты укажите Ваш e-mail</h1>';
+    $form['#suffix'] = '</div>';
 
-  $form['account']['mail']['#attributes']['placeholder'] = 'E-Mail';
-  unset($form['account']['mail']['#title']);
-  unset($form['account']['mail']['#description']);
-  $form["actions"]["submit"]['#value'] = 'Далее';
-  $form["actions"]["submit"]['#attributes']['class'] = ['btn', 'btn-brand', 'btn-wide'];
+    $form['account']['mail']['#attributes']['placeholder'] = 'E-Mail';
+    unset($form['account']['mail']['#title']);
+    unset($form['account']['mail']['#description']);
+    $form["actions"]["submit"]['#value'] = 'Далее';
+    $form["actions"]["submit"]['#attributes']['class'] = ['btn', 'btn-brand', 'btn-wide'];
 
-  $form["fz152_agreement"]["#weight"] = 999;
+    $form["fz152_agreement"]["#weight"] = 999;
 
-  $form['account']['name']['#type'] = 'hidden';
-  $form['account']['name']['#value'] = 'ext_user_' . user_password();
+    $form['account']['name']['#type'] = 'hidden';
+    $form['account']['name']['#value'] = 'ext_user_' . user_password();
 
-  $form['#submit'][] = 'ext_user_user_register_form_submit';
+    $form['#submit'][] = 'ext_user_user_register_form_submit';
+  }
 }
 
 function ext_user_user_register_form_submit($form, &$form_state)
@@ -188,12 +190,14 @@ function ext_user_user_insert(&$edit, &$account, $category = NULL)
  */
 function ext_user_form_user_pass_alter(&$form, &$form_state)
 {
-  $form['#prefix'] = '<div class="user-auth-form-wrapper">' .
-                      '<h1>Восстановление пароля</h1>';
-  $form['#suffix'] = '</div>';
-  $form["mail"]["#markup"] = 'Ссылка для восстановления пароля будет выслана на E-Mail <em class="placeholder">support@kccc.ru</em>.<br>Перед тем, как воспользоватся ссылкой, выйдите из аккаунта.';
-  $form["actions"]["submit"]['#value'] = 'Выслать ссылку для восстановления';
-  $form["actions"]["submit"]['#attributes']['class'] = ['btn', 'btn-brand', 'btn-wide'];
+  if (!user_has_role(ROLE_ADMIN)) {
+    $form['#prefix'] = '<div class="user-auth-form-wrapper">' .
+                        '<h1>Восстановление пароля</h1>';
+    $form['#suffix'] = '</div>';
+    $form["mail"]["#markup"] = 'Ссылка для восстановления пароля будет выслана на E-Mail <em class="placeholder">support@kccc.ru</em>.<br>Перед тем, как воспользоватся ссылкой, выйдите из аккаунта.';
+    $form["actions"]["submit"]['#value'] = 'Выслать ссылку для восстановления';
+    $form["actions"]["submit"]['#attributes']['class'] = ['btn', 'btn-brand', 'btn-wide'];
+  }
 }
 
 /**

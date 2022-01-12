@@ -1,6 +1,5 @@
 <?
 
-
 /**
  * Implements hook_menu().
  */
@@ -18,13 +17,12 @@ function card_menu()
     'access callback' => true,
     'type' => MENU_CALLBACK,
   );
-//  $items['card/%user/edit'] = array(
-//    'page callback' => 'drupal_get_form',
-//    'page arguments' => array('user_profile_form', 1, 'main'),
-//    'access callback' => true,
-//    'type' => MENU_CALLBACK,
-//    'file' => '../../../../../modules/user/user.pages.inc',
-//  );
+  $items['card/%user/vcard'] = array(
+    'page callback' => 'vcard_vcard_download',
+    'page arguments' => array(1),
+    'access callback' => true,
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -107,7 +105,7 @@ function card_page($uid = null, $share = null)
 function card_get_card($uid, $share = false)
 {
   if (is_numeric($uid)) {
-    $name = $surname = $company = $office = $phone = $email = $wa = $fb = $in = $vk = '';
+    $name = $surname = $company = $office = $phone = $email = $wa = $fb = $in = $vk = $logo_url = '';
     $photo_uri = 'photo/no_photo_man.jpg';
     $user_wr = entity_metadata_wrapper('user', $uid);
 

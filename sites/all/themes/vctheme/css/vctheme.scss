@@ -350,7 +350,7 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     .p-card-top {
       display: flex; flex-direction: column; justify-content: space-between;
-      flex: 0 1 37%;
+      flex: 1 0 45%;
       padding-top: 8%;
       .p-card-im {
         flex: 1 0 auto;
@@ -391,8 +391,9 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     .p-card-content {
       display: flex; flex-direction: column; justify-content: space-between;
-      flex: 1 0 45%;
+      flex: 0 1 55%;
       padding: 0 12% 10%;
+      max-height: 55%;
     }
     .p-card-qr {
       flex: 1 0 auto;
@@ -402,7 +403,7 @@ $brand-blue-hover: lighten($brand-blue, 15%);
       border: 1px solid $text-muted;
     }
     .p-card-links {
-      flex: 1 0 50px;
+      flex: 0 1 420px;
       display: flex; justify-content: center; flex-wrap: wrap; align-content: center;
       > div { flex: 100%; }
     }
@@ -432,13 +433,15 @@ $brand-blue-hover: lighten($brand-blue, 15%);
       .filled i { display: inline; }
     }
     .p-card-add {
-      flex: 0 0 0px;
+      flex: 0 0 auto;
       text-align: center;
+      a { color: $text-muted; }
     }
     .p-card-share {
-      flex: 0 0 20%;
+      flex: 0 0 25%;
+      display: flex; align-items: center;
       a {
-        flex: 0 0 30px;
+        flex: 0 0 100%;
         display: flex; justify-content: space-between; text-decoration: none;
         font-weight: 100;
         i {
@@ -457,7 +460,6 @@ $brand-blue-hover: lighten($brand-blue, 15%);
     }
     .p-card-make-icon,
     .p-card-make {
-      position: absolute; bottom: 25px; left: 0; right: 0;
       text-align: center;
       a {
         color: $text-muted; font-size: 14px; font-weight: 300;

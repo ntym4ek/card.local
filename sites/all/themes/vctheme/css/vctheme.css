@@ -323,7 +323,7 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: 0 1 37%;
+      flex: 1 0 45%;
       padding-top: 8%; }
       .card-wrapper .p-card .p-card-top .p-card-im {
         flex: 1 0 auto;
@@ -369,8 +369,9 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: 1 0 45%;
-      padding: 0 12% 10%; }
+      flex: 0 1 55%;
+      padding: 0 12% 10%;
+      max-height: 55%; }
     .card-wrapper .p-card .p-card-qr {
       flex: 1 0 auto;
       display: flex;
@@ -379,7 +380,7 @@ body {
     .card-wrapper .p-card .p-card-border {
       border: 1px solid #ccc; }
     .card-wrapper .p-card .p-card-links {
-      flex: 1 0 50px;
+      flex: 0 1 420px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -417,12 +418,16 @@ body {
       .card-wrapper .p-card .p-card-social .filled i {
         display: inline; }
     .card-wrapper .p-card .p-card-add {
-      flex: 0 0 0px;
+      flex: 0 0 auto;
       text-align: center; }
+      .card-wrapper .p-card .p-card-add a {
+        color: #ccc; }
     .card-wrapper .p-card .p-card-share {
-      flex: 0 0 20%; }
+      flex: 0 0 25%;
+      display: flex;
+      align-items: center; }
       .card-wrapper .p-card .p-card-share a {
-        flex: 0 0 30px;
+        flex: 0 0 100%;
         display: flex;
         justify-content: space-between;
         text-decoration: none;
@@ -439,10 +444,6 @@ body {
           flex: 0 0 auto; }
     .card-wrapper .p-card .p-card-make-icon,
     .card-wrapper .p-card .p-card-make {
-      position: absolute;
-      bottom: 25px;
-      left: 0;
-      right: 0;
       text-align: center; }
       .card-wrapper .p-card .p-card-make-icon a,
       .card-wrapper .p-card .p-card-make a {
